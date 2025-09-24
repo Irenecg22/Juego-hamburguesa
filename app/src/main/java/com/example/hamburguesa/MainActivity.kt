@@ -42,12 +42,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-    var estado by remember { mutableIntStateOf(0) }
-    var dinero by remember { mutableIntStateOf(0) }
-    var bebidaAñadida by remember { mutableStateOf(false) }
-    var hamburguesasVendidas by remember { mutableIntStateOf(0) }
-    var bebidasVendidas by remember { mutableIntStateOf(0) }
-    var juegoTerminado by remember { mutableStateOf(false) }
+    var estado by remember {
+        mutableIntStateOf(0) }
+    var dinero by remember {
+        mutableIntStateOf(0) }
+    var bebidaAñadida by remember {
+        mutableStateOf(false) }
+    var hamburguesasVendidas by remember {
+        mutableIntStateOf(0) }
+    var bebidasVendidas by remember {
+        mutableIntStateOf(0) }
+    var juegoTerminado by remember {
+        mutableStateOf(false) }
 
     if (juegoTerminado) {
 
@@ -58,7 +64,7 @@ fun Greeting(modifier: Modifier = Modifier) {
         ) {
             Image(
                 painter = painterResource(id = R.drawable._710),
-                contentDescription = "Dinero recaudado",
+                contentDescription = "Dinero",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -67,7 +73,7 @@ fun Greeting(modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "¡Has recaudado 150€!")
+            Text(text = "¡Has vendido 150€!")
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -93,7 +99,7 @@ fun Greeting(modifier: Modifier = Modifier) {
         }
 
         Column(
-            modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+            modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()), //para que no colapse
             horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(160.dp))
@@ -125,10 +131,10 @@ fun Greeting(modifier: Modifier = Modifier) {
                 }
             }) {
                 if (estado < 3) {
+
                     Text(text = "Completar hamburguesa")
-                } else {
-                    Text(text = "Vender")
-                }
+                  } else {
+                    Text(text = "Vender") }
             }
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -139,7 +145,7 @@ fun Greeting(modifier: Modifier = Modifier) {
                 bebidasVendidas++
                 if (dinero >= 150) juegoTerminado = true
             }) {
-                Text("Añadir bebida (€4)")
+                Text("Añadir bebida (4€)")
             }
 
             Spacer(modifier = Modifier.height(20.dp))
